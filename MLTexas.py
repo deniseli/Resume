@@ -1,8 +1,7 @@
 # This script deals with suitless hands in Texas Hold'em.  If you
 # are looking for a Texas Hold'em hand analyzer, congratulations!
 # You've come to the right file.  If you were looking to analyze
-# hands for some other kind of poker, well then you can just go
-# fuck yourself.
+# hands for some other kind of poker, then you're shit out of luck.
 #
 # Denise Li 2013
 #

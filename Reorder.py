@@ -4,7 +4,7 @@ import os
 
 END_PUNCTUATION = ['.', '!', '?']
 NO_SPACE_BEFORE_PUNCTUATION = ['\'', '\"', '\,', ':', ')', '/', '\\', ',']
-NO_SPACE_AFTER_PUNCTUATION = ['(' '/', '\\']
+NO_SPACE_AFTER_PUNCTUATION = ['(' '/', '\\', '(']
 
 def split_text():
     return nltk.word_tokenize(raw_text)
@@ -45,3 +45,4 @@ word_list = split_text()
 following_word_dict = make_dict()
 print_hr()
 print_new_sentence()
+print_hr()

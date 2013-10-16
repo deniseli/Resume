@@ -1,8 +1,9 @@
 import nltk
 import random
+import os
 
 END_PUNCTUATION = ['.', '!', '?']
-NO_SPACE_BEFORE_PUNCTUATION = ['\'', '\"', '\,', ':', ')', '/', '\\']
+NO_SPACE_BEFORE_PUNCTUATION = ['\'', '\"', '\,', ':', ')', '/', '\\', ',']
 NO_SPACE_AFTER_PUNCTUATION = ['(' '/', '\\']
 
 def split_text():
@@ -19,6 +20,10 @@ def make_dict():
         else:
             dict[word] = [next]
     return dict
+
+def print_hr():
+    rows, columns = os.popen('stty size', 'r').read().split()
+    print '-' * int(columns)
 
 def print_new_sentence():
     # Choose first word
@@ -38,4 +43,5 @@ def print_new_sentence():
 raw_text = raw_input("Enter the block of text you would like to reorder:\n> ")
 word_list = split_text()
 following_word_dict = make_dict()
+print_hr()
 print_new_sentence()

@@ -6,6 +6,8 @@ END_PUNCTUATION = ['.', '!', '?']
 NO_SPACE_BEFORE_PUNCTUATION = ['\'', '\"', '\,', ':', ')', '/', '\\', ',']
 NO_SPACE_AFTER_PUNCTUATION = ['(' '/', '\\', '(']
 
+MIN_OUTPUT_LENGTH = 100
+
 def split_text():
     return nltk.word_tokenize(raw_text)
 
@@ -32,7 +34,8 @@ def print_new_sentence():
         word = random.choice(following_word_dict.keys())
     sentence = word
     # Fill in more words until sentence completion.
-    while not sentence[-1] in END_PUNCTUATION or len(sentence) < 20:
+    while not sentence[-1] in END_PUNCTUATION or \
+          len(sentence) < MIN_OUTPUT_LENGTH:
         word = random.choice(following_word_dict[word])
         if not word[0] in END_PUNCTUATION + NO_SPACE_BEFORE_PUNCTUATION and \
            not word[-1] in NO_SPACE_AFTER_PUNCTUATION:

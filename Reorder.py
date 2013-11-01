@@ -1,6 +1,7 @@
 import nltk
 import random
 import os
+import sys
 
 END_PUNCTUATION = ['.', '!', '?']
 NO_SPACE_BEFORE_PUNCTUATION = ['\'', '\"', '\,', ':', ')', '/', '\\', ',']
@@ -13,18 +14,18 @@ def split_text():
 
 def make_dict():
     global dict_has_upper
-    dict = {}
+    global following_word_dict
     for i in range(0, len(word_list) - 1):
         word = word_list[i]
         next = word_list[i + 1]
+        print word + " " + next
         if word.istitle() or word.isdigit():
             dict_has_upper = True
-        if word in dict:
+        if word in following_word_dict:
             if not next in dict[word]:
-                dict[word].append(next)
+                following_word_dict[word].append(next)
         else:
-            dict[word] = [next]
-    return dict
+            following_word_dict[word] = [next]
 
 def print_hr():
     rows, columns = os.popen('stty size', 'r').read().split()
@@ -37,10 +38,8 @@ def choose_first_word():
     return word
 
 def print_new_segment():
-    # Choose first word
     word = choose_first_word()
     sentence = word
-    # Fill in more words until sentence completion.
     while not sentence[-1] in END_PUNCTUATION or \
           len(sentence) < MIN_OUTPUT_CHAR_LENGTH:
         if not word in following_word_dict:
@@ -55,10 +54,20 @@ def print_new_segment():
         sentence += word
     print sentence
 
-raw_text = raw_input("Enter the block of text you would like to reorder:\n> ")
+def input_line():
+    return raw_input("Enter the line of text you would like to reorder:\n> ")
+
+def input():
+    sys.stdout.write("Enter the block of text you would like to reorder." +
+                     "Press ENTER, then CTRL + D when you are done.\n> ")
+    s = sys.stdin.read()
+    return s
+
+raw_text = input()
 word_list = split_text()
 dict_has_upper = False
-following_word_dict = make_dict()
+following_word_dict = {}
+make_dict()
 print_hr()
 print_new_segment()
 print_hr()

@@ -1,12 +1,12 @@
-# Find all the taxicab numbers less than N
+# Find all the taxicab numbers less than or equal to N
 # The nth taxicab number, typically denoted Ta(n) or Taxicab(n), is defined as 
 # the smallest number that can be expressed as a sum of two positive algebraic 
 # cubes in n distinct ways.
 
 import math
 
-N = 1000000
-range_max = 100  # cube root of N
+N = (int)(raw_input("Enter an integer N:\n>"))
+range_max = (int)(math.ceil(N ** (1/3.0)))  # cube root of N
 
 pairs = []
 for i in range(1, range_max):

@@ -1,3 +1,12 @@
+/*
+ * DISCLAIMER: I wrote this class as a junior in high school so there's a hell
+ * of a lot of ugly and repeated code.  I'll fix it if I have time at some point
+ * but for now, there's a much better python version at ../Sudoku.py
+ * Anyway, here's the naive solution.  If you're 15 years old, you'll probably
+ * think it's cool.
+ */
+
+
 public class SudokuGrid
 {
 	private String[][] grid;

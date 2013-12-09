@@ -1,3 +1,10 @@
+# This is a Markov chain-based text generator.  The instructions are clear when
+# you run it.  This file is the second iteration of an old Java file I wrote
+# several years ago, but prettier and in Python.
+#
+# Denise Li 2013
+
+
 import nltk
 import random
 import os

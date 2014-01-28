@@ -11,6 +11,7 @@
 import nltk
 import random
 import sys
+import urllib2
 
 
 def split_text(text):
@@ -34,17 +35,33 @@ def talk_about_paul():
     sayings = ["Did you meet Paul Tagliamonte at R|P? He's @paultag on GitHub."]
     nathan_says(random.choice(sayings))
 
-def default_nathan():
-    rand = random.randint(0, 2)
-    if rand is 0:   talk_about_open_source()
-    elif rand is 1: talk_about_debian()
-    elif rand is 2: talk_about_paul()
+def talk_about_country_music():
+    # Could do something interesting with this with a web app.  Perhaps autoplay a song
+    # at the top of the country music charts?
+    nathan_says("Let's listen to country music!")
 
+def talk_about_my_spirit_animal():
+    # Still working on this
+    nathan_says("Paul Tagliamonte is my spirit animal!")
+
+def default_nathan():
+    random.choice([
+        talk_about_open_source,
+        talk_about_debian,
+        talk_about_paul,
+        talk_about_country_music,
+        talk_about_my_spirit_animal
+    ])()
 
 input = ""
+input_split = []
 nathan_says("Oh, hi!")
+# "Oh, hi!" is temporary.  I actually want the user to input a background music
+# choice upon starting NathanBot, but as soon as it loads, NathanBot replaces
+# said choice with country music.
 while True:
     input = raw_input("> ").lower()
+    input_split = split_text(input)
     if "fuck off, nathan" in input:
         nathan_says("Oh, come on!")
         sys.exit()

@@ -8,6 +8,8 @@
 #
 # Nathan.py
 
+# This project moved to deniseli1231/NathanBot after this point.
+
 import nltk
 import random
 import sys
